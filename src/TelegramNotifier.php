@@ -3,7 +3,9 @@
 namespace Stezkoy\NouiTeleAudit;
 
 use GuzzleHttp\Client;
+use GuzzleHttp\Exception\GuzzleException;
 use Illuminate\Contracts\Config\Repository as ConfigRepository;
+use RuntimeException;
 
 class TelegramNotifier
 {
@@ -36,8 +38,24 @@ class TelegramNotifier
             $payload['message_thread_id'] = (int) $topicId;
         }
 
-        $this->http->post("https://api.telegram.org/bot{$token}/sendMessage", [
-            'json' => $payload,
-        ]);
+        try {
+            $response = $this->http->post("https://api.telegram.org/bot{$token}/sendMessage", [
+                'json' => $payload,
+            ]);
+
+            $body = json_decode((string) $response->getBody(), true);
+
+            if (!$body || !($body['ok'] ?? false)) {
+                throw new RuntimeException(
+                    'Telegram API error: ' . ($body['description'] ?? 'unknown error')
+                );
+            }
+        } catch (GuzzleException $e) {
+            throw new RuntimeException(
+                'Failed to send Telegram notification: ' . $e->getMessage(),
+                (int) $e->getCode(),
+                $e
+            );
+        }
     }
 }
