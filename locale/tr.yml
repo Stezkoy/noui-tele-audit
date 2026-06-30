@@ -1,0 +1,5 @@
+stezkoy-noui-tele-audit:
+  messages:
+    user_registered: "Yeni kullanıcı: {username}\nE-posta: {email}"
+    email_confirmed: "E-posta onaylandı: {username}\nE-posta: {email}"
+    discussion_flagged: "Konu şikayet edildi: {discussion_title}"

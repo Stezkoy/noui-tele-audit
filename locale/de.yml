@@ -1,0 +1,5 @@
+stezkoy-noui-tele-audit:
+  messages:
+    user_registered: "Neuer Benutzer: {username}\nE-Mail: {email}"
+    email_confirmed: "E-Mail bestätigt: {username}\nE-Mail: {email}"
+    discussion_flagged: "Thema gemeldet: {discussion_title}"

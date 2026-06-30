@@ -1,0 +1,5 @@
+stezkoy-noui-tele-audit:
+  messages:
+    user_registered: "Новый пользователь: {username}\nEmail: {email}"
+    email_confirmed: "Email подтверждён: {username}\nEmail: {email}"
+    discussion_flagged: "Жалоба на тему: {discussion_title}"

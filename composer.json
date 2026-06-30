@@ -1,0 +1,38 @@
+{
+  "name": "stezkoy/noui-tele-audit",
+  "description": "Flarum v2 extension that sends Telegram notifications for moderation and audit events",
+  "type": "flarum-extension",
+  "version": "1.0.0",
+  "license": "GPL-3.0",
+  "authors": [
+    {
+      "name": "Stezkoy",
+      "email": "stezko@gmail.com",
+      "role": "Developer"
+    }
+  ],
+  "support": {
+    "source": "https://github.com/stezkoy/noui-tele-audit",
+    "issues": "https://github.com/stezkoy/noui-tele-audit/issues"
+  },
+  "require": {
+    "flarum/core": "^2.0",
+    "flarum/flags": "^2.0",
+    "guzzlehttp/guzzle": "^7.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Stezkoy\\NouiTeleAudit\\": "src/"
+    }
+  },
+  "extra": {
+    "flarum-extension": {
+      "title": "NOUI Telegram Audit",
+      "icon": {
+        "name": "fab fa-telegram",
+        "backgroundColor": "#0088cc",
+        "color": "#fff"
+      }
+    }
+  }
+}
