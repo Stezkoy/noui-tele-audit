@@ -28,8 +28,8 @@
     "flarum-extension": {
       "title": "NOUI Telegram Audit",
       "icon": {
-        "name": "fab fa-telegram",
-        "backgroundColor": "#0088cc",
+        "name": "fa-solid fa-bell",
+        "backgroundColor": "#26A5E4",
         "color": "#fff"
       }
     }
