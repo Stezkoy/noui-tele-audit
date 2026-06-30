@@ -1,5 +1,5 @@
 stezkoy-noui-tele-audit:
   messages:
-    user_registered: "Yeni kullanıcı: {username}\nE-posta: {email}"
-    email_confirmed: "E-posta onaylandı: {username}\nE-posta: {email}"
-    discussion_flagged: "Konu şikayet edildi: {discussion_title}"
+    user_registered: "Yeni kullanıcı: <a href=\"{profile_url}\">{username}</a>\nE-posta: {email}"
+    email_confirmed: "E-posta onaylandı: <a href=\"{profile_url}\">{username}</a>\nE-posta: {email}"
+    discussion_flagged: 'Konu şikayet edildi: <a href="{discussion_url}">{discussion_title}</a>'

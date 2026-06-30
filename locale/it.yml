@@ -1,5 +1,5 @@
 stezkoy-noui-tele-audit:
   messages:
-    user_registered: "Nuovo utente: {username}\nEmail: {email}"
-    email_confirmed: "Email confermata: {username}\nEmail: {email}"
-    discussion_flagged: "Discussione segnalata: {discussion_title}"
+    user_registered: "Nuovo utente: <a href=\"{profile_url}\">{username}</a>\nEmail: {email}"
+    email_confirmed: "Email confermata: <a href=\"{profile_url}\">{username}</a>\nEmail: {email}"
+    discussion_flagged: 'Discussione segnalata: <a href="{discussion_url}">{discussion_title}</a>'

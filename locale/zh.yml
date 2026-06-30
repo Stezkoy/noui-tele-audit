@@ -1,5 +1,5 @@
 stezkoy-noui-tele-audit:
   messages:
-    user_registered: "新用户：{username}\n邮箱：{email}"
-    email_confirmed: "邮箱已确认：{username}\n邮箱：{email}"
-    discussion_flagged: "主题被举报：{discussion_title}"
+    user_registered: "新用户：<a href=\"{profile_url}\">{username}</a>\n邮箱：{email}"
+    email_confirmed: "邮箱已确认：<a href=\"{profile_url}\">{username}</a>\n邮箱：{email}"
+    discussion_flagged: '主题被举报：<a href="{discussion_url}">{discussion_title}</a>'

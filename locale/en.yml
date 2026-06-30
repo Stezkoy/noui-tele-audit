@@ -1,5 +1,5 @@
 stezkoy-noui-tele-audit:
   messages:
-    user_registered: "New user: {username}\nEmail: {email}"
-    email_confirmed: "Email confirmed: {username}\nEmail: {email}"
-    discussion_flagged: "Discussion flagged: {discussion_title}"
+    user_registered: "New user: <a href=\"{profile_url}\">{username}</a>\nEmail: {email}"
+    email_confirmed: "Email confirmed: <a href=\"{profile_url}\">{username}</a>\nEmail: {email}"
+    discussion_flagged: 'Discussion flagged: <a href="{discussion_url}">{discussion_title}</a>'

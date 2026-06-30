@@ -16,6 +16,7 @@
 
 ```bash
 composer require stezkoy/noui-tele-audit
+php flarum cache:clear
 ```
 
 ## Настройка

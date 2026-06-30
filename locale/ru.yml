@@ -1,5 +1,5 @@
 stezkoy-noui-tele-audit:
   messages:
-    user_registered: "Новый пользователь: {username}\nEmail: {email}"
-    email_confirmed: "Email подтверждён: {username}\nEmail: {email}"
-    discussion_flagged: "Жалоба на тему: {discussion_title}"
+    user_registered: "Новый пользователь: <a href=\"{profile_url}\">{username}</a>\nEmail: {email}"
+    email_confirmed: "Email подтверждён: <a href=\"{profile_url}\">{username}</a>\nEmail: {email}"
+    discussion_flagged: 'Жалоба на тему: <a href="{discussion_url}">{discussion_title}</a>'
