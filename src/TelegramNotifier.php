@@ -2,30 +2,27 @@
 
 namespace Stezkoy\NouiTeleAudit;
 
-use GuzzleHttp\Client;
-use GuzzleHttp\Exception\GuzzleException;
-use Illuminate\Contracts\Config\Repository as ConfigRepository;
+use Flarum\Foundation\Config;
 use RuntimeException;
 
 class TelegramNotifier
 {
-    protected ConfigRepository $config;
-    protected Client $http;
+    protected Config $config;
 
-    public function __construct(ConfigRepository $config)
+    public function __construct(Config $config)
     {
         $this->config = $config;
-        $this->http = new Client(['timeout' => 10]);
     }
 
-    public function send(string $message): void
+    public function send(string $message): array
     {
-        $token = $this->config->get('stezkoy-noui-tele-audit.bot_token');
-        $chatId = $this->config->get('stezkoy-noui-tele-audit.chat_id');
-        $topicId = $this->config->get('stezkoy-noui-tele-audit.topic_id');
+        $cfg = $this->config->offsetGet('stezkoy-noui-tele-audit');
+        $token = $cfg['bot_token'] ?? null;
+        $chatId = $cfg['chat_id'] ?? null;
+        $topicId = $cfg['topic_id'] ?? null;
 
         if (!$token || !$chatId) {
-            return;
+            return ['ok' => false, 'description' => 'Missing bot_token or chat_id'];
         }
 
         $payload = [
@@ -38,24 +35,32 @@ class TelegramNotifier
             $payload['message_thread_id'] = (int) $topicId;
         }
 
-        try {
-            $response = $this->http->post("https://api.telegram.org/bot{$token}/sendMessage", [
-                'json' => $payload,
-            ]);
+        $url = "https://api.telegram.org/bot{$token}/sendMessage";
 
-            $body = json_decode((string) $response->getBody(), true);
+        $options = [
+            'http' => [
+                'method' => 'POST',
+                'header' => 'Content-Type: application/json',
+                'content' => json_encode($payload),
+                'timeout' => 10,
+            ],
+        ];
 
-            if (!$body || !($body['ok'] ?? false)) {
-                throw new RuntimeException(
-                    'Telegram API error: ' . ($body['description'] ?? 'unknown error')
-                );
-            }
-        } catch (GuzzleException $e) {
+        $context = stream_context_create($options);
+        $result = @file_get_contents($url, false, $context);
+
+        if ($result === false) {
+            throw new RuntimeException('Failed to send Telegram notification: network error');
+        }
+
+        $body = json_decode($result, true);
+
+        if (!$body || !($body['ok'] ?? false)) {
             throw new RuntimeException(
-                'Failed to send Telegram notification: ' . $e->getMessage(),
-                (int) $e->getCode(),
-                $e
+                'Telegram API error: ' . ($body['description'] ?? 'unknown error')
             );
         }
+
+        return $body;
     }
 }
