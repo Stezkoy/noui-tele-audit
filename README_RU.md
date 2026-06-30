@@ -25,7 +25,7 @@ composer require stezkoy/noui-tele-audit
 ```php
 <?php return array(
     'stezkoy-noui-tele-audit' => array(
-        'token' => '1234567890:AAF1Cc2Dd3Ee4Ff5Gg6Hh7Ii8Jj9Kk0Ll',
+        'bot_token' => '1234567890:AAF1Cc2Dd3Ee4Ff5Gg6Hh7Ii8Jj9Kk0Ll',
         'chat_id' => '-1001234567890',
         'topic_id' => '123', // опционально — отправлять в конкретную тему группы
         'notify_on_register' => true,

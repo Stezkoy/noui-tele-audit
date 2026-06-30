@@ -18,7 +18,7 @@ class TelegramNotifier
 
     public function send(string $message): void
     {
-        $token = $this->config->get('stezkoy-noui-tele-audit.token');
+        $token = $this->config->get('stezkoy-noui-tele-audit.bot_token');
         $chatId = $this->config->get('stezkoy-noui-tele-audit.chat_id');
         $topicId = $this->config->get('stezkoy-noui-tele-audit.topic_id');
 

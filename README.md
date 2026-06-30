@@ -25,7 +25,7 @@ Add the following to your `config.php`:
 ```php
 <?php return array(
     'stezkoy-noui-tele-audit' => array(
-        'token' => '1234567890:AAF1Cc2Dd3Ee4Ff5Gg6Hh7Ii8Jj9Kk0Ll',
+        'bot_token' => '1234567890:AAF1Cc2Dd3Ee4Ff5Gg6Hh7Ii8Jj9Kk0Ll',
         'chat_id' => '-1001234567890',
         'topic_id' => '123', // optional — send to a specific topic within a group
         'notify_on_register' => true,
