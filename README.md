@@ -23,7 +23,6 @@ php flarum cache:clear
 Add the following to your `config.php`:
 
 ```php
-<?php return array(
     'stezkoy-noui-tele-audit' => array(
         'bot_token' => '1234567890:AAF1Cc2Dd3Ee4Ff5Gg6Hh7Ii8Jj9Kk0Ll',
         'chat_id' => '-1001234567890',
@@ -32,7 +31,6 @@ Add the following to your `config.php`:
         'notify_on_email_confirmed' => true,
         'notify_on_flag' => true,
     ),
-);
 ```
 
 - `token` — Telegram bot token from [@BotFather](https://t.me/BotFather)
